@@ -1,5 +1,8 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
+language: java
+jre:
+ - openjdk11
+
+script: 
+- ant build
+ 
 
