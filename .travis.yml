@@ -1,4 +1,6 @@
-language: ruby
+language: java
 rvm:
  - 2.2
  - jruby
+
+install: ./install-dependencies.sh
