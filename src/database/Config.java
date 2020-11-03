@@ -1,8 +1,5 @@
 package database;
 
-import java.sql.SQLException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 public class Config {
 	
 	private String host,user,pwd,database,port,driver,url;
