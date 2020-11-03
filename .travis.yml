@@ -2,7 +2,14 @@ language: java
 jre:
  - openjdk11
 
-script: 
-- ant build
- 
 
+addons:
+  sonarcloud:
+    organization: "evoi95"
+    token:
+      secure: "90f9d01e792efeed607a49ebb5abece8c4fe6301" # encrypted value of your token
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner
+  - ant build
