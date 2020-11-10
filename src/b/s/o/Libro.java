@@ -100,6 +100,10 @@ public class Libro {
 		this.prezzo = prezzo;
 		this.foto = foto;
 		this.disponibilita = disponibilita;
+		
+		/*
+		 * Factory per generare utente
+		 */
 	}
 	
 
