@@ -6,19 +6,15 @@ public class Admin {
 	protected String pass;
 	protected int idAmm;
 	
-	
-	
-	public Admin() {
-				
+		
+	public Admin() 
+	{
 		nome = null;
 		cognome = null ;
 		email = null;
 		pass = null;
 		idAmm = -1;
-	
 	}
-
-
 
 	public Admin(String nome, String cognome, String email, String pass, int idAmm) {
 		
