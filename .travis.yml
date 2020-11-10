@@ -5,7 +5,7 @@ jdk: openjdk11
 
 before_install:
 
-  - sudo apt install mysql-workbenc
+  - sudo apt install mysql-workbench
 
 install: true
  
