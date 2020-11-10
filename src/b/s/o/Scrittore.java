@@ -1,4 +1,5 @@
 package b.s.o;
+import java.util.ArrayList;
 
 public class Scrittore {
 	
@@ -15,6 +16,8 @@ public class Scrittore {
       */
 	private String nome,cognome,email,user,pass,descrizione,listaPref,libriPubb;
 	//lista colleghi associati??
+	private ArrayList<Scrittore> colleghi=new ArrayList<Scrittore>();
+
 
 	private int idScrittore,dataN,editore;
 

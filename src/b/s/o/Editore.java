@@ -1,9 +1,11 @@
 package b.s.o;
+import java.util.ArrayList;
 
 public class Editore {
 
 	private String nome,cognome,email,pass,casaEditrice,libriPubb;
-	//listaScrittoriAsociati ???
+	private ArrayList<String>Scrittori=new ArrayList<String>();
+
 	private int idEditore;
 	public String getNome() {
 		return this.nome;
