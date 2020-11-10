@@ -10,9 +10,11 @@ public class Main {
 		
 		System.out.print("Sono bravo a rompere le cose infomartiche");
 		
-		if (false) {
-		ConnToDb.InitailConnection();
-		ConnToDb.connection();
+		try {
+			CreateDefaultDB.createDefaultDB();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	  }
 

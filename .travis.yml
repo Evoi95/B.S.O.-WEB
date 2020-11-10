@@ -3,6 +3,13 @@ language: java
 jdk: openjdk11
 
 
+before_install:
+
+  - sudo apt install mysql-workbenc
+
+install: true
+ 
+
 addons:
   sonarcloud:
     organization: "evoi95"

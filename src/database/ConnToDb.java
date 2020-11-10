@@ -10,6 +10,7 @@ public class ConnToDb
 	protected static Connection conn = null;
 
 	static Config c =new Config();
+	
 
 	public static  boolean InitailConnection()
 	{
@@ -64,11 +65,36 @@ public class ConnToDb
 			e2.printStackTrace();
 			System.err.println("ERRORE");
 		}			
-		//	}
+		
 
 		return false;
 	}
+	
+	/*public static  boolean GeneralConnection()
+	{
 
+		try
+		{
+			Class.forName(c.getDriver());
+			System.out.print("Tentativo di conessione al server..........\n");
+			conn = DriverManager.getConnection(c.getUrl(), c.getUser(),c.getPwd());
+			System.out.print("Connesso initial..........\n");
+			return true;
+
+		} 
+		catch (SQLException e1)
+		{
+			e1.printStackTrace();
+			System.err.println("ERRORE DI SQL");
+		} 
+		catch (ClassNotFoundException e2)
+		{
+			e2.printStackTrace();
+			System.err.println("ERRORE ");
+		}
+		return false;			
+			
+	}*/
 
 
 }
