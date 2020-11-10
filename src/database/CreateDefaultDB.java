@@ -45,7 +45,7 @@ public class CreateDefaultDB
 						+ "    autore varchar(20), lingua varchar(10),"
 						+ "    categoria Varchar(40), dataPubblicazione date,"
 						+ "    recensione text, copieVendute int, breveDescrizione text,"
-						+ "    disponibilità int, prezzo float"
+						+ "    disponibilita' int, prezzo float"
 						+ "    ,img longblob);"
 						+ "\n"
 						+ "Create table  if not exists EDIOTRE "
