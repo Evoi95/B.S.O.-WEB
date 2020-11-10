@@ -19,11 +19,15 @@ public class CreateDefaultDB
 	
 		try 
 		{
-			status = ConnToDb.connection() ;
+			status = ConnToDb.InitailConnection() ;
 			if(status) 
 			{
 				st = ConnToDb.conn.createStatement();
+				query="CREATE DATABASE IF NOT EXISTS ispw";
+				st.execute(query);
+		
 				
+			
 				
 			}
 			else 
