@@ -6,7 +6,7 @@ jdk: openjdk11
 addons:
   sonarcloud:
     organization: "evoi95"
-    token: "071a0adf841bba331df6cdf7df158055beab85c2" # encrypted value of your token
+    token: "6d5cec859a4a29bc48708738b7bd9b6a7860273e" # encrypted value of your token
 
 services:
   - mysql
