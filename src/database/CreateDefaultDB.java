@@ -88,6 +88,8 @@ public class CreateDefaultDB
 						+ "      ";
 				st.executeUpdate(query);
 				System.out.println("Tabella creata");
+				
+				// popolo il db con utenti e dati  
 				ConnToDb.conn.close();				
 				
 			}
@@ -97,13 +99,6 @@ public class CreateDefaultDB
 				ConnToDb.conn.close();				
 
 			}
-	/*		else if (!ConnToDb.InitailConnection() && !ConnToDb.connection())
-			{
-				System.out.println("Non sono riuscito a connttermi a mysql workbench e al database 'ispw' ");
-
-			
-			}
-			*/
 			else 
 			{
 				System.err.println("Errore di connesione al db");

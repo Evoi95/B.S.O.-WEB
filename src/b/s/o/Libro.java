@@ -1,7 +1,11 @@
 package b.s.o;
 import java.awt.*;
 public class Libro {
-	private String titolo,autore,lingua,categoria,codiceIsbn,editore,descrizione;
+	private String titolo,autore,lingua;
+	private static String categoria;
+	private String codiceIsbn;
+	private String editore;
+	private String descrizione;
 	private int numPag,numAcq,dataPub;
 	private float prezzo;
 	private Image foto;
@@ -25,8 +29,8 @@ public class Libro {
 	public void setLingua(String lingua) {
 		this.lingua = lingua;
 	}
-	public String getCategoria() {
-		return this.categoria;
+	public static String getCategoria() {
+		return categoria;
 	}
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
