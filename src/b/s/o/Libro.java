@@ -10,6 +10,7 @@ public class Libro {
 	private float prezzo;
 	private Image foto;
 	private boolean disponibilita;
+	private int copieRimanenti;
 	
 	public String getTitolo() {
 		return this.titolo;
@@ -90,7 +91,7 @@ public class Libro {
 		this.disponibilita = disponibilita;
 	}
 	public Libro(String titolo, String autore, String lingua, String categoria, String codiceIsbn, String editore,
-			String descrizione, int numPag, int numAcq, int dataPub, float prezzo, Image foto, boolean disponibilita) {
+			String descrizione, int numPag, int numAcq, int dataPub, float prezzo, Image foto, boolean disponibilita, int quantita) {
 		this.titolo = titolo;
 		this.autore = autore;
 		this.lingua = lingua;
@@ -104,6 +105,7 @@ public class Libro {
 		this.prezzo = prezzo;
 		this.foto = foto;
 		this.disponibilita = disponibilita;
+		this.copieRimanenti = quantita;
 		
 		/*
 		 * Factory per generare utente

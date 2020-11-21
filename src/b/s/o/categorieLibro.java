@@ -4,8 +4,8 @@ import java.lang.Enum;
 
 enum BookCategory{
 	AdolescentiEragazzi, Arte, CinemaEFotografia, Biografie,diariEMemorie, CalendariAgende, Diritto,
-	DizionariEOpere, Economia, Famiglia, SaluteEBenessere, FantascienzaEFantasy, FumettiEManga,	GialliEThriller,
-	Humour,	Informatica, WebEDigitalMedia, LetteraturaENarrativa, LibriPerBambini, LibriScolastici,	LibriUniversitari,
+	DizionariEOpere, Economia, Famiglia, SaluteEBenessere, FantascienzaEFantasy, FumettiEManga,	GialliEThriller,SelfHelp,ComputerEgiochi,
+	Humour,	Informatica, WebEDigitalMedia, LetteraturaENarrativa, LibriPerBambini, LibriScolastici,	LibriUniversitari, ricettariGgenerali,
 	LinguisticaEScrittura,Politica,	Religione, RomanziRosa,	Scienze, TecnologiaEMedicina, Sport, Storia, TempoLibero, Viaggi, Altro
 	};
 
@@ -33,6 +33,14 @@ public class categorieLibro {
 		if (categoria.equals(BookCategory.AdolescentiEragazzi)) 
 		{
 			return "AdolescentiEragazzi";
+		}	
+		if (categoria.equals(BookCategory.ricettariGgenerali)) 
+		{
+			return "ricettariGgenerali";
+		}
+		if (categoria.equals(BookCategory.SelfHelp)) 
+		{
+			return "SelfHelp";
 		}	
 		if (categoria.equals(BookCategory.Arte)) 
 		{
@@ -157,6 +165,10 @@ public class categorieLibro {
 		if (categoria.equals(BookCategory.Altro)) 
 		{
 			return "Altro";
+		}
+		if (categoria.equals(BookCategory.ComputerEgiochi)) 
+		{
+			return "ComputerEgiochi";
 		}
 		return null;
 	}
