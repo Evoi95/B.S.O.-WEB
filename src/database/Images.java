@@ -18,7 +18,7 @@ public class Images {
 		notValid = false;
 	}
 	
-	public Images(List<Image> img,boolean notValid) {
+	public Images(List<Image> img ,boolean notValid) {
 		this.img = img;
 		this.notValid = notValid;
 	}

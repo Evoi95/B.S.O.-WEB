@@ -25,7 +25,6 @@ public class CreateDefaultDB
 	
 	public static void createDefaultDB () throws SQLException, ClassNotFoundException, FileNotFoundException
 	{
-		//List<File> bookImg = (List<File>) new Images();
 		try 
 		{
 			
@@ -120,9 +119,9 @@ public class CreateDefaultDB
 						+ "`disp, "
 						+ "`prezzo`, "
 						+ "`copieRimanenti`,"
-						//+ "`img`) "
+						+ "`img`) "
 						+"		"
-						+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+						+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 				prepQ = ConnToDb.conn.prepareStatement(qInsert, Statement.RETURN_GENERATED_KEYS);
 				prepQ.setString(1,"Kobane calling. Oggi:"); // titolo varchar 
 				prepQ.setInt(2, 312); // numero pagine int
@@ -134,37 +133,17 @@ public class CreateDefaultDB
 				//ps.setDate(2, new java.sql.Date(endDate.getTime());
 				prepQ.setDate(8, java.sql.Date.valueOf("2020-09-04"));  // date
 				prepQ.setString(9,"assurdo"); // recensione
-				prepQ.setInt(10,2000); // copie vendute
+				prepQ.setInt(10, 2000); // copie vendute
 				prepQ.setString(11, "ciao"); // breve drescizione
 				prepQ.setInt(12,1);
-				prepQ.setFloat(13, (float) 22.50);
-				prepQ.setInt (14 , 15);
-				//FileInputStream fin = new FileInputStream("/imagesBook/icon.png");
-				//prepQ.setBinaryStream(15, fin);
-				/*for (File i : bookImg) {
-					FileInputStream fin = new FileInputStream(i);
-					prepQ.setBinaryStream(15, fin);
-					prepQ.executeUpdate();
-				}*/
-				// inserisco i dati per dei libri di default
-				prepQ.executeUpdate();
-				ResultSet rs = prepQ.getGeneratedKeys();
-				rs.next();
-				int lastId = rs.getInt(1);
-				System.out.println(lastId);
-				
-				/*
-				for (File i : aptImg) {
-					qInsert = "INSERT INTO imgRoomTable (roomId, image) VALUES (?,?);";
-					prepQ = conn.prepareStatement(qInsert);
-					prepQ.setInt(1, lastId);
-					FileInputStream fin = new FileInputStream(i);
-					prepQ.setBinaryStream(2, fin);
-					prepQ.executeUpdate();
-				}*/
+				prepQ.setFloat(13, 12);
+				prepQ.setInt (14, 15);
+				FileInputStream fin = new FileInputStream("/imagesBook/icon.png");
+				prepQ.setBinaryStream(15, fin);
+				prepQ.executeLargeUpdate();
 				// popolo il db con utenti e dati 
-			//	st.executeUpdate(qInsert);
-				//System.out.println("Tabella populata con valori di default");
+				
+				System.out.println("Tabella populata con valori di default");
 				ConnToDb.conn.close();				
 				
 			}
@@ -209,7 +188,8 @@ public class CreateDefaultDB
 						+ "";
 				// popolo il db con utenti e dati 
 				st.executeUpdate(qInsert);
-				*/ConnToDb.conn.close();		
+				*/
+				ConnToDb.conn.close();		
 			}
 			else 
 			{
