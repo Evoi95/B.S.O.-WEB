@@ -109,21 +109,22 @@ public class CreateDefaultDB
 						+ "`numeroPagine`,"//2 Int
 						+ "`Cod_isbn`," //3 String of 10 values
 						+ "`editore`," //4 String
-						+ "`autore`," //
-						+ "`lingua`, "
-						+ "`categoria`, "
-						+ "`dataPubblicazione`, "
-						+ "`recensione`, "
-						+ "`copieVendute`, "
-						+ "`breveDescrizione`, "
-						+ "`disp, "
-						+ "`prezzo`, "
-						+ "`copieRimanenti`,"
-						+ "`img`) "
+						+ "`autore`," //5
+						+ "`lingua`, " //6
+						+ "`categoria`, " //7
+						+ "`dataPubblicazione`, " //8
+						+ "`recensione`, " //9
+						+ "`copieVendute`, " //10
+						+ "`breveDescrizione`, " //11
+						+ "`disp, " // 12
+						+ "`prezzo`, " //13
+						+ "`copieRimanenti`," //14
+						+ "`img`) " // 15
 						+"		"
-						+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-				prepQ = ConnToDb.conn.prepareStatement(qInsert, Statement.RETURN_GENERATED_KEYS);
-				prepQ.setString(1,"Kobane calling. Oggi:"); // titolo varchar 
+						+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+				prepQ = ConnToDb.conn.prepareStatement(qInsert);
+						
+				prepQ.setString(1,"Kobane calling. Oggi"); // titolo varchar 
 				prepQ.setInt(2, 312); // numero pagine int
 				prepQ.setString(3,"8832734591"); // 
 				prepQ.setString(4, "Bao Publishing");
@@ -140,7 +141,7 @@ public class CreateDefaultDB
 				prepQ.setInt (14, 15);
 				FileInputStream fin = new FileInputStream("/imagesBook/icon.png");
 				prepQ.setBinaryStream(15, fin);
-				prepQ.executeLargeUpdate();
+				prepQ.executeUpdate();
 				// popolo il db con utenti e dati 
 				
 				System.out.println("Tabella populata con valori di default");
