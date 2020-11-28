@@ -21,7 +21,13 @@ public class CreateDefaultDB
 
 	//private static CallableStatement cStmt;
 
-	
+	//TODO:
+    /*
+     * CREARE NEL DB TABELLE RIVISTE E ALTRO
+     * 
+     * SISTEAMRE LA CREAZIONE DELLE DB E LA POPOLAZIONE
+     * 
+     */
 	
 	public static void createDefaultDB () throws SQLException, ClassNotFoundException, FileNotFoundException
 	{
