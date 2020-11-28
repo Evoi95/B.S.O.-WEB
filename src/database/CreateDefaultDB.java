@@ -102,11 +102,20 @@ public class CreateDefaultDB
 				
 				query=	"Create table if not exists PAGAMENTO "
 						+ "	( id int primary key not null auto_increment,"
+						// metto un int perchè psso avere 3 pagametni 0 carta di credito, 1 contanti, -1 errore
 						+ "	  Metodo_pagamento int, esito int,"
 						+ "      riepilogo text,"
 						+ "      idUtente int);";
 				st.executeUpdate(query);
 				System.out.println("Creata tabella Pagamento");
+				
+				query=	"Create table if not exists CartaDiCredito "
+						+ "	( id int primary key not null auto_increment,"
+						+ "	  NumeroCC varchar[16], currCredito int,"
+						+ "      riepilogo text,"
+						+ "      idUtente int);";
+				st.executeUpdate(query);
+				System.out.println("Creata tabella carta di credito ");
 
 				System.out.println("Tabelle create!");
 				// ibnserisco dei libri per il db
@@ -129,6 +138,7 @@ public class CreateDefaultDB
 						+"		"
 						+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 				prepQ = ConnToDb.conn.prepareStatement(qInsert);
+
 						
 				prepQ.setString(1,"Kobane calling. Oggi"); // titolo varchar 
 				prepQ.setInt(2, 312); // numero pagine int
@@ -149,7 +159,6 @@ public class CreateDefaultDB
 				prepQ.setBinaryStream(15, fin);
 				prepQ.executeUpdate();
 				// popolo il db con utenti e dati 
-				
 				System.out.println("Tabella populata con valori di default");
 				ConnToDb.conn.close();				
 				
