@@ -170,7 +170,7 @@ public class CreateDefaultDB
 						+ "`recensione`, "
 						+ "`copieVendute`, "
 						+ "`breveDescrizione`, "
-						+ "`disponibilità`, "
+						+ "`disponibilita`, "
 						+ "`prezzo`, "
 						+ "`copieRimanenti`) "
 						
