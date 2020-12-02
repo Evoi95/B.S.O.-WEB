@@ -107,35 +107,29 @@ public class CreateDefaultDB
 						+ "      riepilogo text,"
 						+ "      idUtente int);";
 				st.executeUpdate(query);
+				
 				System.out.println("Creata tabella Pagamento");
 				
-				query=	"Create table if not exists CartaDiCredito "
-						+ "	( id int primary key not null auto_increment,"
-						+ "	  NumeroCC varchar[16], currCredito int,"
-						+ "      riepilogo text,"
-						+ "      idUtente int);";
-				st.executeUpdate(query);
-				System.out.println("Creata tabella carta di credito ");
-
+				
 				System.out.println("Tabelle create!");
 				// ibnserisco dei libri per il db
-				qInsert="INSERT INTO `ispw`.`libro` "
-						+ "(`titolo`," //1 String
-						+ "`numeroPagine`,"//2 Int
-						+ "`Cod_isbn`," //3 String of 10 values
-						+ "`editore`," //4 String
-						+ "`autore`," //5
-						+ "`lingua`, " //6
-						+ "`categoria`, " //7
-						+ "`dataPubblicazione`, " //8
-						+ "`recensione`, " //9
-						+ "`copieVendute`, " //10
-						+ "`breveDescrizione`, " //11
-						+ "`disp, " // 12
-						+ "`prezzo`, " //13
-						+ "`copieRimanenti`," //14
-						+ "`img`) " // 15
-						+"		"
+				qInsert="INSERT INTO `ispw`.`libro`"
+						+ "(`titolo`,"
+						+ "`numeroPagine`,"
+						+ "`Cod_isbn`,"
+						+ "`editore`,"
+						+ "`autore`,"
+						+ "`lingua`,"
+						+ "`categoria`,"
+						+ "`dataPubblicazione`,"
+						+ "`recensione`,"
+						+ "`copieVendute`,"
+						+ "`breveDescrizione`,"
+						+ "`disp`,"
+						+ "`prezzo`,"
+						+ "`copieRimanenti`,"
+						+ "`img`)"
+						+ "  "
 						+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 				prepQ = ConnToDb.conn.prepareStatement(qInsert);
 
@@ -155,12 +149,14 @@ public class CreateDefaultDB
 				prepQ.setInt(12,1);
 				prepQ.setFloat(13, 12);
 				prepQ.setInt (14, 15);
-				FileInputStream fin = new FileInputStream("/imagesBook/icon.png");
+				FileInputStream fin = new FileInputStream("imagesBook/icon.png");
 				prepQ.setBinaryStream(15, fin);
 				prepQ.executeUpdate();
 				// popolo il db con utenti e dati 
 				System.out.println("Tabella populata con valori di default");
-				ConnToDb.conn.close();				
+				ConnToDb.conn.close();
+				System.out.println("Connesione chiusa col db");
+				
 				
 			}
 			else if (ConnToDb.InitailConnection() && ConnToDb.connection())

@@ -1,5 +1,9 @@
 package database;
 
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -11,94 +15,59 @@ public class PopulateDefaultDb {
 	private static String query ;
 	private static String qSelect ;
 	private static String qInsert ;
+	private static PreparedStatement prepQ = null;
+    private BufferedImage slate;
 	
-	public PopulateDefaultDb()
+	public PopulateDefaultDb() throws FileNotFoundException
 	{
 		try 
 		{
 			
-			if(ConnToDb.InitailConnection() && !ConnToDb.connection() ) 
-			{
-				System.out.println("Connesso a mysql workbench, ma non ho torvato il database 'ispw' ");
-				System.out.println("Creo il database 'ispw' ");
-				st = ConnToDb.conn.createStatement();
-				query="CREATE DATABASE IF NOT EXISTS ispw ";
-				st.execute(query);
-				query = "USE ispw ";
-				st.execute(query);
-				System.out.println("Database creato");
-				System.out.println("Chiamo la Stored Procedure, per creare le tabelle");
-				//cStmt = ConnToDb.conn.prepareCall("call createTableDB");
-				query=	"CREATE TABLE if not exists ADMIN "
-						+ "	( Nome Varchar(20),Cognome Varchar(20),"
-						+ "	  id INT primary key auto_increment not null,"
-						+ "      email Varchar(20), pwd varchar(20)"
-						+ "	);"
-						+ "\n"
-						+ "Create table  if not exists LIBRO "
-						+ "	( titolo VARCHAR(100), numeroPagine float, "
-						+ "    Cod_isbn varchar(10), editore varchar(100) primary key,"
-						+ "    autore varchar(100), lingua varchar(10),"
-						+ "    categoria Varchar(60), dataPubblicazione date,"
-						+ "    recensione text, copieVendute int, breveDescrizione text,"
-						+ "    disponibilita' int, prezzo float"
-						+ "    ,img longblob, copieRimanenti int);"
-						+ "\n"
-						+ "Create table  if not exists EDIOTRE "
-						+ "	( Nome Varchar(20) ,Cognome Varchar(20), "
-						+ "	  id int primary key auto_increment, "
-						+ "      email Varchar(20), password Varchar(20), "
-						+ "      casaEditrice Varchar(100),"
-						+ "      NumeroPublicazioni int,"
-						+ "      listaScritottoriAssociati varchar(200),"
-						+ "      LibriPubblicati Varchar(200),"
-						+ "      foreign key (LibriPubblicati) references libro(editore)); "
-						+ "\n"
-						+ "Create table  if not exists SCRITTORI"
-						+ "	( Nome Varchar(20),Cognome Varchar(20),"
-						+ "	  id int primary key auto_increment not null,"
-						+ "      email Varchar(20), pwd Varchar(20),"
-						+ "      nickName Varchar(20), descrizione text,"
-						+ "      dataDiNascita Date, ListaDeiPreferiti Varchar(200),"
-						+ "      ListaColleghiAssociati Varchar(200), "
-						+ "      editore int,"
-						+ "      foreign key (editore) references editore(id), "
-						+ "      libriPubblicati varchar(20), numeroPublicazioni int);"
-						+ "\n "
-						+ "Create table if not exists USER "
-						+ "	( Nome Varchar(20),Cognome Varchar(20),"
-						+ "     id int primary key auto_increment not null, "
-						+ "     email Varchar(20), password Varchar(20), "
-						+ "     nickName Varchar(20), descrizione text,"
-						+ "     dataDiNascita Date, listDeiPreferiti Varchar(200)"
-						+ "     );"
-						+ "     "
-						+ "\n"
-						+ "Create table if not exists PAGAMENTO "
-						+ "	( id int primary key not null auto_increment,"
-						+ "	  Metodo_pagamento int, esito int,"
-						+ "      riepilogo text,"
-						+ "      idUtente int ,"
-						+ "      foreign key (idUtente) references utente(id)"
-						+ "	);"
-						+ "      ";
-				st.executeUpdate(query);
+			qInsert="INSERT INTO `ispw`.`libro`"
+					+ "(`titolo`,"
+					+ "`numeroPagine`,"
+					+ "`Cod_isbn`,"
+					+ "`editore`,"
+					+ "`autore`,"
+					+ "`lingua`,"
+					+ "`categoria`,"
+					+ "`dataPubblicazione`,"
+					+ "`recensione`,"
+					+ "`copieVendute`,"
+					+ "`breveDescrizione`,"
+					+ "`disp`,"
+					+ "`prezzo`,"
+					+ "`copieRimanenti`,"
+					+ "`img`)"
+					+ "  "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+			prepQ = ConnToDb.conn.prepareStatement(qInsert);
+
+					
+			prepQ.setString(1,"Kobane calling. Oggi"); // titolo varchar 
+			prepQ.setInt(2, 312); // numero pagine int
+			prepQ.setString(3,"8832734591"); // 
+			prepQ.setString(4, "Bao Publishing");
+			prepQ.setString(5,"Zerocalcare");
+			prepQ.setString(6,"Italiano");
+			prepQ.setString(7,"FumettiEManga");
+			//ps.setDate(2, new java.sql.Date(endDate.getTime());
+			prepQ.setDate(8, java.sql.Date.valueOf("2020-09-04"));  // date
+			prepQ.setString(9,"assurdo"); // recensione
+			prepQ.setInt(10, 2000); // copie vendute
+			prepQ.setString(11, "ciao"); // breve drescizione
+			prepQ.setInt(12,1);
+			prepQ.setFloat(13, 12);
+			prepQ.setInt (14, 15);
+			FileInputStream fin = new FileInputStream("imagesBook/icon.png");
+			prepQ.setBinaryStream(15, fin);
+			prepQ.executeUpdate();
 				System.out.println("Tabella popolata");
 				
 				// popolo il db con utenti e dati  
 				ConnToDb.conn.close();				
 				
-			}
-			else if (ConnToDb.InitailConnection() && ConnToDb.connection())
-			{
-				System.out.println("Connesso a mysql workbench e al database 'ispw' ");
-				ConnToDb.conn.close();				
 
-			}
-			else 
-			{
-				System.err.println("Errore di connesione al db");
-			}
 		}
 		catch(SQLException e1) 
 		{
