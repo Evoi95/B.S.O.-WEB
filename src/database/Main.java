@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) throws SQLException, FileNotFoundException {
 		// TODO Auto-generated method stub
 		
-		System.out.print("Sono bravo a rompere le cose infomartiche");
+		System.out.println("Sono bravo a rompere le cose infomartiche");
 		
 		try {
 			CreateDefaultDB.createDefaultDB();
