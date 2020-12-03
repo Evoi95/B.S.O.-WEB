@@ -102,13 +102,37 @@ public class CreateDefaultDB
 				
 				query=	"Create table if not exists PAGAMENTO "
 						+ "	( id int primary key not null auto_increment,"
-						// metto un int perchè psso avere 3 pagametni 0 carta di credito, 1 contanti, -1 errore
+						// metto un int perche psso avere 3 pagametni 0 carta di credito, 1 contanti, -1 errore
 						+ "	  Metodo_pagamento int, esito int,"
 						+ "      riepilogo text,"
 						+ "      idUtente int);";
 				st.executeUpdate(query);
-				
 				System.out.println("Creata tabella Pagamento");
+				
+				query=	"Create table if not exists RIVISTA "
+						+ "	( titolo VARCHAR(200),tipologia Varchar(60),"
+						+ "	autore varchar(200), lingua varchar(10),"
+						+ "	 editore varchar(200) ,"
+						+ "	Descrizione text, dataPubblicazione date,"
+						+ " numPaganie int, disp int,"
+						+ "	prezzo float,"
+						+ "	copieRimanenti int,img longblob,"
+						+ "id int primary key not null auto_increment);";
+				st.executeUpdate(query);
+				System.out.println("Creata tabella RIVISTA");
+				
+				query=	"Create table if not exists GIORNALE "
+						+ "	( titolo VARCHAR(200),tipologia Varchar(60),"
+						+ "	lingua varchar(10),"
+						+ "	editore varchar(200) ,"
+						+ "	dataPubblicazione date,"
+						+ " copiRim int, "
+						+ "	disp int,"
+						+ "	prezzo float,"
+						+ "	copieRimanenti int,img longblob,"
+						+ "id int primary key not null auto_increment);";
+				st.executeUpdate(query);
+				System.out.println("Creata tabella GIORNALE");
 				
 				
 				System.out.println("Tabelle create!");
