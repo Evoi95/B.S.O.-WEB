@@ -1,8 +1,8 @@
 package factoryBook;
 
 import java.sql.Date;
+import java.awt.Image;
 import java.io.InputStream;
-import javafx.scene.image.Image;
 
 
 enum TipiRivista {

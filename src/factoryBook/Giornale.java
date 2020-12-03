@@ -1,8 +1,7 @@
 package factoryBook;
 
+import java.awt.Image;
 import java.sql.Date;
-
-import javafx.scene.image.Image;
 
 public class Giornale implements Raccolta {
 	

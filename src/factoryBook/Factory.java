@@ -1,7 +1,10 @@
 package factoryBook;
 
+import java.awt.Image;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
+import javax.imageio.ImageIO;
 
 
 public class Factory {
@@ -11,10 +14,11 @@ public class Factory {
 			String categoria, Date dataPubb, String recensione, int nrCopie, String desc, int disponibilita,
 			float prezzo, int copieRim, InputStream img) throws Exception
 	{
-		
+		Image foto = ImageIO.read(img);
+
 		switch(tipologia)
 		{
-		case "libro": return new Libro(titolo,numPag,codIsbn,editore,autore,lingua,categoria,dataPubb,recensione,nrCopie,desc,disponibilita,prezzo,copieRim,img); 
+		case "libro": return new Libro(titolo,numPag,codIsbn,editore,autore,lingua,categoria,dataPubb,recensione,nrCopie,desc,disponibilita,prezzo,copieRim,foto); 
 		
 		//case "giornale" :return new Giornale(tipologia,titolo,lingua,editore,dataPubb,copieRimanenti,prezzo,foto,disponibilita);
 		
@@ -26,11 +30,14 @@ public class Factory {
 		}
 		
 
-	}	public Raccolta createLibro(String tipologia,String titolo, int numPag, String codIsbn, String editore, String autore, String lingua,
+	}	
+	public Raccolta createLibro(String tipologia,String titolo, int numPag, String codIsbn, String editore, String autore, String lingua,
 			String categoria, Date dataPubb, String recensione, int nrCopie, String desc, int disponibilita,
-			float prezzo, int copieRim, InputStream img)
+			float prezzo, int copieRim, InputStream img) throws IOException
 	{
-	 return new Libro(titolo,numPag,codIsbn,editore,autore,lingua,categoria,dataPubb,recensione,nrCopie,desc,disponibilita,prezzo,copieRim,img); 
+	Image foto = ImageIO.read(img);
+
+	 return new Libro(titolo,numPag,codIsbn,editore,autore,lingua,categoria,dataPubb,recensione,nrCopie,desc,disponibilita,prezzo,copieRim,foto); 
 	}
 	
 	
