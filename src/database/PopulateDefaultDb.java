@@ -183,6 +183,7 @@ public class PopulateDefaultDb {
 	}
 
 	private static void createRivista() throws FileNotFoundException
+
 	{
 		try 
 		{
@@ -221,4 +222,10 @@ public class PopulateDefaultDb {
 			e.printStackTrace();
 		}
 	}
+
+	private static void createUser()
+	{
+		
+	}
+
 }
